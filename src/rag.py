@@ -30,28 +30,26 @@ Score: {resultado["score"]:.4f}
 
 def gerar_resposta(pergunta, contexto):
     prompt = f"""
-Você é um assistente que responde perguntas com base exclusivamente
-nas informações fornecidas no contexto.
-
-Analise o contexto antes de responder.
+Você é um assistente que responde perguntas exclusivamente com base no contexto fornecido.
 
 Regras:
-- Use somente as informações presentes no contexto.
-- Não utilize conhecimento externo.
-- Não invente informações.
-- Responda de forma clara e objetiva.
-- Se o contexto não possuir informações suficientes para responder
-  à pergunta, considere o contexto insuficiente.
-- Se o contexto for insuficiente, informe isso na resposta.
+- Use somente informações presentes no contexto.
+- Não use conhecimento externo nem invente informações.
+- Se o contexto for suficiente, responda normalmente.
+- Se for insuficiente, não tente responder. Diga que não compreende o assunto da pergunta,
+  informe explicitamente o assunto principal abordado pelo documento e diga que pode
+  responder perguntas relacionadas a esse assunto.
 
-Retorne sua resposta no seguinte formato JSON:
+Retorne SOMENTE um JSON válido, sem Markdown ou qualquer texto fora dele.
 
+Formato obrigatório:
 {{
     "contexto_suficiente": true ou false,
     "resposta": "sua resposta aqui"
 }}
 
-Não escreva nada fora do JSON.
+"contexto_suficiente" deve ser um booleano (true/false), nunca uma string.
+A chave "resposta" deve sempre existir.
 
 Contexto:
 {contexto}
