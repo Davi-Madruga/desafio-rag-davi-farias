@@ -1,5 +1,5 @@
-TAMANHO_CHUNK = 500
-OVERLAP = 5
+TAMANHO_CHUNK = 800
+OVERLAP = 100
 
 def criar_chunks(documento):
 
