@@ -12,19 +12,22 @@ with st.form("pergunta_form"):
 
 
 if enviar:
-    with st.spinner("Carregando..."):
-        resultados, resposta = executar_rag(pergunta)
+    if not pergunta.strip():
+        st.warning("Digite uma pergunta antes de enviar.")
+    else:
+        with st.spinner("Carregando..."):
+            resultados, resposta = executar_rag(pergunta)
 
-    st.subheader("Resposta")
-    st.write(resposta[0])
+        st.subheader("Resposta")
+        st.write(resposta[0])
 
-    if resposta[1]:
-        st.subheader("Chunks encontrados")
+        if resposta[1]:
+            st.subheader("Chunks encontrados")
 
-        for chunk in resultados:
-            with st.expander(
-                f"{chunk['chunk']['id']} — Score: {chunk['score']:.2f}"
-            ):
-                st.write(f"**Arquivo:** {chunk['chunk']['arquivo']}")
-                st.write(f"**Caminho:** {chunk['chunk']['caminho']}")
-                st.write(chunk['chunk']['texto'])
+            for contador, chunk in enumerate(resultados, start=1):
+                with st.expander(
+                    f"#{contador} — {chunk['chunk']['id']} — Score: {chunk['score']:.2f}"
+                ):
+                    st.write(f"**Arquivo:** {chunk['chunk']['arquivo']}")
+                    st.write(f"**Caminho:** {chunk['chunk']['caminho']}")
+                    st.write(chunk['chunk']['texto'])
