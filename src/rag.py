@@ -1,6 +1,6 @@
 import json
 
-from busca import buscar, carregar_indice
+from src.busca import buscar, carregar_indice
 from ollama import chat
 
 
@@ -88,27 +88,9 @@ def executar_rag(pergunta):
 
     contexto = criar_contexto(resultados)
 
-    resposta, contexto_suficiente = gerar_resposta(
+    resposta = gerar_resposta(
         pergunta,
         contexto
     )
 
-    if contexto_suficiente:
-        print("\n" + "=" * 70)
-        print("FONTES UTILIZADAS")
-        print("=" * 70)
-        print(contexto)
-
-    print("\n" + "=" * 70)
-    print("RESPOSTA")
-    print("=" * 70)
-    print(resposta)
-
-
-print("=" * 70)
-print("RAG - HTTPX")
-print("=" * 70)
-
-pergunta = input("\nDigite sua pergunta: ")
-
-executar_rag(pergunta)
+    return resultados, resposta

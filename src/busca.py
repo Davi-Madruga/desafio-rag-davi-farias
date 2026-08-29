@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-from embeddings import gerar_embedding
+from src.embeddings import gerar_embedding
 
 def carregar_indice(caminho):
     with open(caminho, "r", encoding="utf-8") as arquivo:

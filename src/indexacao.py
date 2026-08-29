@@ -1,9 +1,9 @@
 import json
 import os
 
-from chunking import criar_chunks
-from embeddings import adicionar_embeddings
-from ingestao import ler_documentos
+from src.chunking import criar_chunks
+from src.embeddings import adicionar_embeddings
+from src.ingestao import ler_documentos
 
 def salvar_indice(chunks, caminho):
     os.makedirs("data", exist_ok=True)
