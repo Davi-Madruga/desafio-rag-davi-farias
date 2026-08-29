@@ -14,7 +14,6 @@ def criar_chunks(documento):
         texto_chunk = texto[inicio:fim]
 
         chunks.append({
-            "chunk_id" : f"CHUNK-{len(chunks) + 1:02d}",  
             "texto" : texto_chunk,
             "arquivo" : documento["arquivo"],
             "caminho" : documento["caminho"]
