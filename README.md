@@ -23,28 +23,7 @@ O fluxo principal consiste em:
 6. Gerar uma resposta baseada exclusivamente no contexto recuperado.
 
 ## Arquitetura resumida
-```text
-rag-md/
-├── Documentação               # Documentação do desafio
-├── httpx/
-│   └── docs/                  # Documentação em Markdown
-│       ├── arquivo1.md
-│       ├── arquivo2.md
-│       └── ...
-│
-├── src/                       # Código principal do RAG
-│   ├── ingestao.py            # Leitura dos arquivos Markdown
-│   ├── chunking.py            # Divisão dos documentos em chunks
-│   ├── embeddings.py          # Geração dos embeddings
-│   ├── indexacao.py           # Armazenamento/indexação dos vetores
-│   ├── busca.py               # Busca por similaridade
-│   └── rag.py                 # Pipeline RAG e geração da resposta
-│
-├── .gitignore
-├── app.py                     # Interface da aplicação
-├── README.md                  # Documentação do projeto
-└── requirements.txt           # Dependências Python
-```
+
 ```text
 Documentos Markdown
         ↓
@@ -92,13 +71,13 @@ pip install -r requirements.txt
 ### 4. Gerar a indexação
 
 ```bash
-python src/indexacao.py
+python -m src.indexacao
 ```
 
 ### 5. Executar a aplicação
 
 ```bash
-streamlit run app.py
+streamlit run app.py --server.fileWatcherType none
 ```
 
 ## Decisões técnicas
