@@ -71,13 +71,13 @@ pip install -r requirements.txt
 ### 4. Gerar a indexação
 
 ```bash
-python src/indexacao.py
+python -m src.indexacao
 ```
 
 ### 5. Executar a aplicação
 
 ```bash
-streamlit run app.py
+streamlit run app.py --server.fileWatcherType none
 ```
 
 ## Decisões técnicas
