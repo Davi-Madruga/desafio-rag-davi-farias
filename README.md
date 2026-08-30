@@ -56,7 +56,10 @@ cd rag-md
 ```
 
 ### 2. Criar e ativar o ambiente virtual
-
+Neste projeto foi utilizado o python 3.12, se tiver algum conflito verifique sua versão
+```bash
+python --version
+```
 ```bash
 python -m venv venv
 .\venv\Scripts\activate
@@ -67,14 +70,31 @@ python -m venv venv
 ```bash
 pip install -r requirements.txt
 ```
+### 4. Instalar o Ollama
+Baixe e instale o Ollama pelo site oficial:
+https://ollama.com/
+Após a instalação, abra o terminal e verifique se ele está funcionando:
+```bash
+ollama --version
+```
+### 5. Baixar o modelo Qwen3 4B
+Com o Ollama instalado, execute:
+```bash
+ollama pull qwen3:4b
+```
+Esse comando baixa o modelo Qwen3 4B para ser executado localmente.
+Para verificar se o modelo foi instalado:
+```bash
+ollama list
+```
+O modelo qwen3:4b deve aparecer na lista.
 
-### 4. Gerar a indexação
+### 6. Gerar a indexação
 
 ```bash
 python -m src.indexacao
 ```
-
-### 5. Executar a aplicação
+### 7. Executar a aplicação
 
 ```bash
 streamlit run app.py --server.fileWatcherType none
